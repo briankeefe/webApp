@@ -1,0 +1,17 @@
+{
+  "name": "webApp",
+  "version": "1.0.0",
+  "description": "Side Project",
+  "main": "/pages/index.js",
+  "repository": "https://github.com/briankeefe/webApp.git",
+  "author": "briankeefe <briankeefe@umass.edu>",
+  "license": "MIT",
+  "dependencies": {
+    "@material-ui/core": "^4.3.0",
+    "@material-ui/icons": "^4.2.1",
+    "eslint": "^6.1.0",
+    "next": "^9.0.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
