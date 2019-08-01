@@ -14,7 +14,6 @@ import {
   Container,
   CssBaseline
 } from "@material-ui/core";
-// eslint-disable-next-line no-unused-vars
 import { spacing } from "@material-ui/system";
 import { withStyles } from "@material-ui/styles";
 import Card from "@material-ui/core/Card";
@@ -23,21 +22,11 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
 import { teal, blue, white } from "@material-ui/core/colors/";
+import Word from "../models/Word.js";
 
 const theme = createMuiTheme({
   spacing: factor => [0, 4, 8, 16, 32, 64][factor]
 });
-
-class Word {
-  constructor(text, definition, pot) {
-    this.word = text;
-    this.def = definition;
-    this.pot = pot;
-  }
-  getWord() {
-    return this.word;
-  }
-}
 
 const styles = theme => ({
   root: {

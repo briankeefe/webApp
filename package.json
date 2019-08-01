@@ -1,5 +1,5 @@
 {
-  "name": "webApp",
+  "name": "web-app",
   "version": "1.0.0",
   "description": "Side Project",
   "main": "/pages/index.js",
@@ -10,6 +10,7 @@
     "@material-ui/core": "^4.3.0",
     "@material-ui/icons": "^4.2.1",
     "eslint": "^6.1.0",
+    "eslint-plugin-react": "^7.14.3",
     "next": "^9.0.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
