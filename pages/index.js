@@ -24,6 +24,7 @@ import PropTypes from "prop-types";
 import { teal, blue, white } from "@material-ui/core/colors/";
 import Word from "../models/Word.js";
 import { black } from "ansi-colors";
+import Layout from "../src/universal/layout";
 
 const theme = createMuiTheme({
 	spacing: factor => [0, 4, 8, 16, 32, 64][factor],
@@ -59,6 +60,9 @@ const styles = theme => ({
 	},
 	submitPaper: {
 		padding: theme.spacing(3),
+	},
+	outer: {
+		minHeight: "45vh",
 	},
 });
 
@@ -116,10 +120,20 @@ function IndexPage(props) {
 	};
 
 	const SampleCard = (word, def, cur, pot) => (
-		<Box my={5}>
+		<Box my={5} className={classes.outer}>
+			<Layout />
 			<Grid justify="center" container>
 				<Grid item xs={12} sm={6} md={4}>
 					<Card className={classes.card}>
+						<Button onClick={curDec}>Back</Button>
+						<Button
+							onClick={curInc}
+							style={{
+								display: "flex",
+								float: "right",
+							}}>
+							Next
+						</Button>
 						<CardContent>
 							<Typography
 								className={classes.title}
@@ -151,19 +165,6 @@ function IndexPage(props) {
 
 	return (
 		<div>
-			<Head>
-				<title>My page title</title>
-				<meta
-					name="viewport"
-					content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"
-				/>
-			</Head>
-			<CssBaseline />
-			<AppBar className={classes.appBar}>
-				<Toolbar>
-					<Typography variant="h4">Flash Card Maker</Typography>
-				</Toolbar>
-			</AppBar>
 			<Box className={classes.cardBox}>
 				<Box py={10} mx={2}>
 					{SampleCard(
@@ -172,28 +173,6 @@ function IndexPage(props) {
 						cur + 1,
 						cards[cur].pot
 					)}
-				</Box>
-				<Box style={{ margin: "auto" }}>
-					<Grid container justify="center" spacing={10}>
-						<Grid item spacing={3}>
-							<Button
-								variant="contained"
-								color="primary"
-								className={classes.button}
-								onClick={curDec}>
-								<SkipPrev />
-							</Button>
-						</Grid>
-						<Grid item>
-							<Button
-								variant="contained"
-								color="primary"
-								className={classes.button}
-								onClick={curInc}>
-								<SkipNext />
-							</Button>
-						</Grid>
-					</Grid>
 				</Box>
 			</Box>
 			<Box className={classes.cardBox}>
