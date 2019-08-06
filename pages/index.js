@@ -112,11 +112,11 @@ function IndexPage(props) {
 				Accept: "application/json",
 				"Content-Type": "application/json",
 			},
-			body: {
+			body: JSON.stringify({
 				word: document.getElementById("fieldOne").value,
 				pos: document.getElementById("fieldTwo").value,
 				def: document.getElementById("definition").value,
-			},
+			}),
 		});
 		console.log("end");
 		document.getElementById("fieldOne").value = "";
