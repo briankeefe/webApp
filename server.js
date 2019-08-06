@@ -1,9 +1,16 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const port = 3001;
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+	res.header(
+		"Access-Control-Allow-Headers",
+		"Origin, X-Requested-With, Content-Type, Accept"
+	);
+	next();
+});
+const port = 3001;
 
 const mongoose = require("mongoose");
 
@@ -24,9 +31,12 @@ Card.find(function(err, words) {
 Card.remove({}, function(err) {
 	console.log("collection removed");
 });
-mongoose.connect("mongodb://localhost/flashcards", {
-	useNewUrlParser: true,
-});
+mongoose.connect(
+	"mongodb+srv://new-user:123@cluster0-gzyjc.mongodb.net/test?retryWrites=true&w=majority",
+	{
+		useNewUrlParser: true,
+	}
+);
 
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));

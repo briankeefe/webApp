@@ -103,19 +103,22 @@ function IndexPage(props) {
 			console.log("Invalid Word Name");
 			return;
 		}
-		fetch("localhost:3001/word", {
-			method: "POST",
-			headers: {
-				"Accept": "application/json",
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				word: document.getElementById("fieldOne").value,
-			}),
-		});
 		nameSet(nextWord);
 		cardSet([nextWord].concat(cards));
 		console.log(cards);
+		fetch("http://localhost:3001/word", {
+			method: "POST",
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json",
+			},
+			body: {
+				word: document.getElementById("fieldOne").value,
+				pos: document.getElementById("fieldTwo").value,
+				def: document.getElementById("definition").value,
+			},
+		});
+		console.log("end");
 		document.getElementById("fieldOne").value = "";
 		document.getElementById("definition").value = "";
 		document.getElementById("fieldTwo").value = "";
