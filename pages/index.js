@@ -103,6 +103,16 @@ function IndexPage(props) {
 			console.log("Invalid Word Name");
 			return;
 		}
+		fetch("localhost:3001/word", {
+			method: "POST",
+			headers: {
+				"Accept": "application/json",
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				word: document.getElementById("fieldOne").value,
+			}),
+		});
 		nameSet(nextWord);
 		cardSet([nextWord].concat(cards));
 		console.log(cards);

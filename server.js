@@ -47,11 +47,14 @@ app.post("/word", (req, res) => {
 	Card.find(function(err, words) {
 		if (err) return console.error(err);
 		let x = words;
-		console.log(x);
-		res.send(JSON.stringify(x));
+		let arr = x.map(y => y.word);
+		res.send(JSON.stringify(arr));
 	});
 });
 
+app.get("/word", (req, res) => {
+	res.send("yes");
+});
 app.listen(port, () => {
 	console.log("server is now listening on 3001");
 });
