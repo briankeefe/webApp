@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import SkipNext from "@material-ui/icons/SkipNext.js";
 import SkipPrev from "@material-ui/icons/SkipPrevious.js";
@@ -25,6 +25,7 @@ import { teal, blue, white } from "@material-ui/core/colors/";
 import Word from "../models/Word.js";
 import { black } from "ansi-colors";
 import Layout from "../src/universal/layout";
+import axios from "axios";
 
 const theme = createMuiTheme({
 	spacing: factor => [0, 4, 8, 16, 32, 64][factor],
@@ -75,22 +76,15 @@ function IndexPage(props) {
 	const [cur, curSet] = useState(0);
 	const fetch = require("node-fetch");
 
-	fetch("http://localhost:3001/word")
-		.then(res => {
-			if (res.ok) {
-				return res.json();
-			} else {
-				throw new Error("Somehting went wrong ... ");
-			}
-		})
-		.then(info => {
-			for (let i = 0; i < info.length; ++i) {
-				arr.push(info[i]);
-			}
-		})
-		.catch(error => {
-			console.error(error);
-		});
+	useEffect(() => {
+		async function fetchData() {
+			// You can await here
+			const response = await axios("http://localhost:3001/word");
+			cardSet(response.data);
+		}
+		fetchData();
+	}, []);
+
 
 	const curInc = num => {
 		if (cur + 1 === cards.length) {
