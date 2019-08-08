@@ -73,6 +73,24 @@ function IndexPage(props) {
 	let arr = [sampleWord];
 	const [cards, cardSet] = useState(arr);
 	const [cur, curSet] = useState(0);
+	const fetch = require("node-fetch");
+
+	fetch("http://localhost:3001/word")
+		.then(res => {
+			if (res.ok) {
+				return res.json();
+			} else {
+				throw new Error("Somehting went wrong ... ");
+			}
+		})
+		.then(info => {
+			for (let i = 0; i < info.length; ++i) {
+				arr.push(info[i]);
+			}
+		})
+		.catch(error => {
+			console.error(error);
+		});
 
 	const curInc = num => {
 		if (cur + 1 === cards.length) {
