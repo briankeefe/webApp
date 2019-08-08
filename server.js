@@ -69,7 +69,10 @@ app.post("/word", (req, res) => {
 
 // Placeholder
 app.get("/word", (req, res) => {
-	res.send("yes");
+	Card.find((err, words) => {
+		if (err) return console.error(err);
+		res.send(words);
+	});
 });
 
 app.listen(port, () => {
