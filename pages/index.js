@@ -73,13 +73,14 @@ function IndexPage(props) {
 	const [cards, cardSet] = useState(arr);
 	const [cur, curSet] = useState(0);
 	const fetch = require("node-fetch");
+	async function fetchData() {
+		// You can await here
+		const response = await axios("http://localhost:3001/word");
+		cardSet(response.data);
+	}
+
 
 	useEffect(() => {
-		async function fetchData() {
-			// You can await here
-			const response = await axios("http://localhost:3001/word");
-			cardSet(response.data);
-		}
 		fetchData();
 	}, []);
 
