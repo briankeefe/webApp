@@ -69,9 +69,7 @@ const styles = theme => ({
 
 function IndexPage(props) {
 	const { classes } = props;
-	let sampleWord = new Word("text");
-	const [name, nameSet] = useState(sampleWord);
-	let arr = [sampleWord];
+	let arr = [];
 	const [cards, cardSet] = useState(arr);
 	const [cur, curSet] = useState(0);
 	const fetch = require("node-fetch");
@@ -84,7 +82,6 @@ function IndexPage(props) {
 		}
 		fetchData();
 	}, []);
-
 
 	const curInc = num => {
 		if (cur + 1 === cards.length) {
@@ -115,7 +112,6 @@ function IndexPage(props) {
 			console.log("Invalid Word Name");
 			return;
 		}
-		nameSet(nextWord);
 		cardSet([nextWord].concat(cards));
 		console.log(cards);
 		fetch("http://localhost:3001/word", {
@@ -188,16 +184,24 @@ function IndexPage(props) {
 		</Box>
 	);
 
+	const PrintCard = () => {
+		if (cards.length == 0) {
+			return SampleCard("NULL", "NULL", 0, "NULL");
+		} else {
+			return SampleCard(
+				cards[cur].word,
+				cards[cur].def,
+				cur + 1,
+				cards[cur].pot
+			);
+		}
+	};
+
 	return (
 		<div>
 			<Box className={classes.cardBox}>
 				<Box py={10} mx={2}>
-					{SampleCard(
-						cards[cur].word,
-						cards[cur].def,
-						cur + 1,
-						cards[cur].pot
-					)}
+					{PrintCard()}
 				</Box>
 			</Box>
 			<Box className={classes.cardBox}>
