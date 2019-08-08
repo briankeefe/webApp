@@ -19,22 +19,13 @@ const port = 3001;
 const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
-const ObjectId = Schema.ObjectId;
 const schema = new Schema({
 	word: String,
 	pos: String,
 	def: String,
 });
 const Card = mongoose.model("Card", schema);
-const word = new Card({ word: "test", pos: "test", def: "test" });
-word.save();
-Card.find(function(err, words) {
-	if (err) return console.error(err);
-	console.log(words);
-});
-Card.remove({}, function(err) {
-	console.log("collection removed");
-});
+
 mongoose.connect(
 	"mongodb+srv://new-user:123@cluster0-gzyjc.mongodb.net/flashcards?retryWrites=true&w=majority",
 	{
@@ -67,11 +58,18 @@ app.post("/word", (req, res) => {
 	});
 });
 
-// Placeholder
 app.get("/word", (req, res) => {
 	Card.find((err, words) => {
 		if (err) return console.error(err);
 		res.send(words);
+	});
+});
+
+app.delete("/word", (req, res) => {
+	Card.remove({}, function(err) {
+		if (err) return console.error(err);
+		console.log("collection removed");
+		res.send("ALL DELETED");
 	});
 });
 

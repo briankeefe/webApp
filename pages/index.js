@@ -185,15 +185,15 @@ function IndexPage(props) {
 	);
 
 	const PrintCard = () => {
-		if (cards.length == 0) {
-			return SampleCard("NULL", "NULL", 0, "NULL");
-		} else {
+		if (cards.length != 0 && cards[cur] != undefined) {
 			return SampleCard(
 				cards[cur].word,
 				cards[cur].def,
 				cur + 1,
-				cards[cur].pot
+				cards[cur.pos]
 			);
+		} else {
+			return SampleCard("NULL", "NULL", 0, "NULL");
 		}
 	};
 
