@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import SkipNext from "@material-ui/icons/SkipNext.js";
 import SkipPrev from "@material-ui/icons/SkipPrevious.js";
@@ -78,9 +78,7 @@ function IndexPage(props) {
 		const response = await axios("http://localhost:3001/word");
 		cardSet(response.data);
 	}
-
-
-	useEffect(() => {
+	useLayoutEffect(() => {
 		fetchData();
 	}, []);
 
@@ -186,7 +184,10 @@ function IndexPage(props) {
 	);
 
 	const PrintCard = () => {
-		if (cards.length != 0 && cards[cur] != undefined) {
+		if (cards.length != 0) {
+			if (cards[cur] == undefined) {
+				return;
+			}
 			return SampleCard(
 				cards[cur].word,
 				cards[cur].def,
@@ -202,7 +203,7 @@ function IndexPage(props) {
 		<div>
 			<Box className={classes.cardBox}>
 				<Box py={10} mx={2}>
-					{PrintCard()}
+					{PrintCard()}}
 				</Box>
 			</Box>
 			<Box className={classes.cardBox}>
