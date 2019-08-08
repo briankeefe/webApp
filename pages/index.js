@@ -78,7 +78,7 @@ function IndexPage(props) {
 		const response = await axios("http://localhost:3001/word");
 		cardSet(response.data);
 	}
-	useLayoutEffect(() => {
+	useEffect(() => {
 		fetchData();
 	}, []);
 
