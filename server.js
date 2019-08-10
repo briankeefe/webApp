@@ -26,9 +26,13 @@ const schema = new Schema({
 });
 const Card = mongoose.model("Card", schema);
 // mongodb+srv://new-user:123@cluster0-gzyjc.mongodb.net/flashcards?retryWrites=true&w=majority
-mongoose.connect("mongodb://localhost:27017/test", {
-	useNewUrlParser: true,
-});
+// mongodb://localhost:27017/test
+mongoose.connect(
+	"mongodb+srv://new-user:123@cluster0-gzyjc.mongodb.net/flashcards?retryWrites=true&w=majority",
+	{
+		useNewUrlParser: true,
+	}
+);
 
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
