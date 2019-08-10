@@ -184,9 +184,6 @@ function IndexPage(props) {
 	);
 
 	const PrintCard = () => {
-		while (cards.length == 0) {
-			return SampleCard("NULL", "NULL", 0, "NULL");
-		}
 		if (cards.length != 0) {
 			if (cards[cur] == undefined) {
 				return;
@@ -197,6 +194,8 @@ function IndexPage(props) {
 				cur + 1,
 				cards[cur.pos]
 			);
+		} else {
+			return SampleCard("NULL", "NULL", 0, "NULL");
 		}
 	};
 
