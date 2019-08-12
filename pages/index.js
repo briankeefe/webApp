@@ -203,7 +203,7 @@ function IndexPage(props) {
 		<div>
 			<Box className={classes.cardBox}>
 				<Box py={10} mx={2}>
-					{PrintCard()}}
+					{PrintCard()}
 				</Box>
 			</Box>
 			<Box className={classes.cardBox}>
