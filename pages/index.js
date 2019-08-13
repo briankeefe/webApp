@@ -63,7 +63,7 @@ const styles = theme => ({
 		padding: theme.spacing(3),
 	},
 	outer: {
-		minHeight: "45vh",
+		minHeight: "20vh",
 	},
 });
 
@@ -139,7 +139,7 @@ function IndexPage(props) {
 		}
 	};
 
-	const SampleCard = (word, def, cur, pot) => (
+	const SampleCard = (word, def, cur, pos) => (
 		<Box my={5} className={classes.outer}>
 			<Layout />
 			<Grid justify="center" container>
@@ -167,7 +167,7 @@ function IndexPage(props) {
 							<Typography
 								className={classes.pos}
 								color="textSecondary">
-								{partOfSpeech(pot)}
+								{partOfSpeech(pos)}
 							</Typography>
 							<Typography variant="body2" component="p">
 								{def}
@@ -192,7 +192,7 @@ function IndexPage(props) {
 				cards[cur].word,
 				cards[cur].def,
 				cur + 1,
-				cards[cur.pos]
+				cards[cur].pos
 			);
 		} else {
 			return SampleCard("NULL", "NULL", 0, "NULL");
