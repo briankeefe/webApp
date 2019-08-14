@@ -65,6 +65,10 @@ const styles = theme => ({
 	outer: {
 		minHeight: "20vh",
 	},
+	container: {
+		minHeight: "100vh",
+		backgroundColor: teal[500],
+	},
 });
 
 function IndexPage(props) {
@@ -73,13 +77,16 @@ function IndexPage(props) {
 	const [cards, cardSet] = useState(arr);
 	const [cur, curSet] = useState(0);
 	const fetch = require("node-fetch");
-	async function fetchData() {
-		// You can await here
-		const response = await axios("http://localhost:3001/word");
-		cardSet(response.data);
-	}
+
 	useEffect(() => {
+		console.log("CONNECTING");
+		async function fetchData() {
+			// You can await here
+			const response = await axios("http://localhost:3001/word");
+			cardSet(response.data);
+		}
 		fetchData();
+		console.log("CONNECTED");
 	}, []);
 
 	const curInc = num => {
@@ -200,7 +207,7 @@ function IndexPage(props) {
 	};
 
 	return (
-		<div>
+		<div className={classes.container}>
 			<Box className={classes.cardBox}>
 				<Box py={10} mx={2}>
 					{PrintCard()}
