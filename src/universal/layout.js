@@ -31,11 +31,11 @@ let layout = classes => (
 			<Toolbar>
 				<Typography variant="h4">Flash Card Maker</Typography>
 				<Box mr={5} style={{ position: "absolute", right: 0 }}>
-					<Link href="/add">
-						<Button variant="contained">Add</Button>
+					<Link href="/cards">
+						<Button variant="contained">Cards</Button>
 					</Link>
 					<Link href="/">
-						<Button variant="contained">Cards</Button>
+						<Button variant="contained">Add</Button>
 					</Link>
 				</Box>
 			</Toolbar>
