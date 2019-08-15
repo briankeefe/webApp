@@ -31,6 +31,9 @@ let layout = classes => (
 			<Toolbar>
 				<Typography variant="h4">Flash Card Maker</Typography>
 				<Box mr={5} style={{ position: "absolute", right: 0 }}>
+					<Link href="/study">
+						<Button variant="contained">Study</Button>
+					</Link>
 					<Link href="/cards">
 						<Button variant="contained">Cards</Button>
 					</Link>
