@@ -22,7 +22,7 @@ const styles = theme => ({
 		margin: "auto",
 	},
 	paper: {
-		minHeight: "15vh",
+		height: "20vh",
 	},
 });
 
