@@ -1,6 +1,6 @@
 import { withStyles } from "@material-ui/styles";
 import { createMuiTheme } from "@material-ui/core";
-import { Typography, Box, Grid, Paper } from "@material-ui/core";
+import { Typography, Box, Grid, Paper, Container } from "@material-ui/core";
 import Layout from "../src/universal/layout";
 import { teal } from "@material-ui/core/colors";
 import { Word } from "../models/Word";
@@ -64,18 +64,19 @@ function CardsPage(props) {
 	return (
 		<Box className={classes.cardBox} style={{ minHeight: "100vh" }}>
 			<Layout />
-
-			<Box mt={10}>
-				<Grid container spacing={2}>
-					{cards.map(word => (
-						<Grid item xs={6}>
-							<Typography style={{ color: "white" }}>
-								{ShowCard(word)}
-							</Typography>
-						</Grid>
-					))}
-				</Grid>
-			</Box>
+			<Container>
+				<Box mt={10}>
+					<Grid container spacing={2}>
+						{cards.map(word => (
+							<Grid item xs={12} sm={6} md={3}>
+								<Typography style={{ color: "white" }}>
+									{ShowCard(word)}
+								</Typography>
+							</Grid>
+						))}
+					</Grid>
+				</Box>
+			</Container>
 		</Box>
 	);
 }
