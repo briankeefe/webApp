@@ -34,6 +34,9 @@ let layout = classes => (
 					<Link href="/study">
 						<Button variant="contained">Study</Button>
 					</Link>
+					<Link href="/tables">
+						<Button variant="contained">Tables</Button>
+					</Link>
 					<Link href="/cards">
 						<Button variant="contained">Cards</Button>
 					</Link>
