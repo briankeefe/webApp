@@ -3,6 +3,9 @@ import { teal } from "@material-ui/core/colors";
 import { createMuiTheme, Typography, Box } from "@material-ui/core";
 import Layout from "../src/universal/layout";
 import { white } from "ansi-colors";
+import * as firebase from "firebase";
+import react, { useState, useEffect } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 const theme = createMuiTheme({
 	spacing: factor => [0, 4, 8, 16, 32, 64][factor],
 });
@@ -26,6 +29,16 @@ const styles = theme => ({
 
 function TablesPage(props) {
 	const { classes } = props;
+	const [user, loading, error] = useAuthState(firebase.auth());
+	useEffect(() => {
+		let running = firebase.apps.length;
+		let s = running === 1 ? "FIREBASE RUNNING" : "FIREBASE NOT RUNNING";
+		console.log(s);
+		if (running) {
+			console.log(user.email);
+		}
+	});
+
 	return (
 		<Box className={classes.outerBox}>
 			<Layout />
