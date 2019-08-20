@@ -19,22 +19,20 @@ const port = 3001;
 const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
-const ObjectId = Schema.ObjectId;
-const schema = new Schema({
+let schema = new Schema({
 	word: String,
 	pos: String,
 	def: String,
 });
 const Card = mongoose.model("Card", schema);
-const word = new Card({ word: "test", pos: "test", def: "test" });
-word.save();
-Card.find(function(err, words) {
-	if (err) return console.error(err);
-	console.log(words);
+schema = new Schema({
+	FirstName: String,
+	LastName: String,
+	Stacks: Object,
 });
-Card.remove({}, function(err) {
-	console.log("collection removed");
-});
+const Person = mongoose.model("Person", schema);
+// mongodb+srv://new-user:123@cluster0-gzyjc.mongodb.net/flashcards?retryWrites=true&w=majority
+// mongodb://localhost:27017/test
 mongoose.connect(
 	"mongodb+srv://new-user:123@cluster0-gzyjc.mongodb.net/flashcards?retryWrites=true&w=majority",
 	{
@@ -67,12 +65,38 @@ app.post("/word", (req, res) => {
 	});
 });
 
-// Placeholder
 app.get("/word", (req, res) => {
 	Card.find((err, words) => {
 		if (err) return console.error(err);
 		res.send(words);
 	});
+});
+
+app.delete("/word", (req, res) => {
+	Card.remove({}, function(err) {
+		if (err) return console.error(err);
+		console.log("collection removed");
+		res.send("ALL DELETED");
+	});
+});
+
+app.post("/person", (req, res) => {
+	let person = new Person({
+		FirstName: "Sample",
+		LastName: "Person",
+		Stacks: undefined,
+	});
+	person.save();
+	res.send("myes");
+});
+
+app.put("/person", (req, res) => {
+	let search = Person.find().size;
+	if (search == null || search == undefined) {
+		res.send("oops");
+	} else {
+		res.send("yes, " + search);
+	}
 });
 
 app.listen(port, () => {
