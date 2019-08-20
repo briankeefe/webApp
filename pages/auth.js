@@ -1,9 +1,11 @@
 import { useAuthState } from "react-firebase-hooks/auth";
 import * as firebase from "firebase";
-import { createMuiTheme } from "@material-ui/core";
+import { createMuiTheme, Box, Typography, Button } from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
 import react, { useState, useEffect } from "react";
 import Layout from "../src/universal/layout";
+
+import { teal } from "@material-ui/core/colors";
 
 const theme = createMuiTheme({
 	spacing: factor => [0, 4, 8, 16, 32, 64][factor],
@@ -13,6 +15,12 @@ const styles = theme => ({
 	root: {
 		flexGrow: 1,
 		padding: theme.spacing(2),
+	},
+
+	tealBox: {
+		backgroundColor: teal[500],
+		color: "white",
+		height: "100vh",
 	},
 });
 
@@ -48,7 +56,7 @@ function AuthPage(props) {
 	if (loading) {
 		return (
 			<div>
-				<p>Initialising User...</p>
+				<Typography>Initialising User...</Typography>
 			</div>
 		);
 	}
@@ -56,24 +64,29 @@ function AuthPage(props) {
 	if (error) {
 		return (
 			<div>
-				<p>Error: {error}</p>
+				<Typography>Error: {error}</Typography>
 			</div>
 		);
 	}
 
 	if (user) {
 		return (
-			<div>
+			<Box className={classes.tealBox} px={2} py={2}>
 				<Layout />
-				<p>Current User: {user.email}</p>
-				<button onClick={logout}>Log out</button>
-			</div>
+				<Typography>Current User: {user.email}</Typography>
+				<Button variant="contained" onClick={logout}>
+					Log out
+				</Button>
+			</Box>
 		);
 	}
-	return (<div>
-		<Layout />
-		<button onClick={login}>Log in</button>
-	</div> 
+	return (
+		<Box className={classes.tealBox} px={2} py={2}>
+			<Layout />
+			<Button variant="contained" onClick={login}>
+				Log in
+			</Button>
+		</Box>
 	);
 }
 

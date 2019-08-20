@@ -44,6 +44,9 @@ function layout(classes) {
 						<Link href="/">
 							<Button variant="contained">Add</Button>
 						</Link>
+						<Link href="/auth">
+							<Button variant="contained">Auth</Button>
+						</Link>
 					</Box>
 				</Toolbar>
 			</AppBar>
