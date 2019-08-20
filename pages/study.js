@@ -5,7 +5,7 @@ import Layout from "../src/universal/layout";
 import { white } from "ansi-colors";
 const theme = createMuiTheme({
 	spacing: factor => [0, 4, 8, 16, 32, 64][factor],
-});
+});``
 
 const styles = theme => ({
 	root: {
