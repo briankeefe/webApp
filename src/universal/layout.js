@@ -17,36 +17,38 @@ const styles = theme => ({
 	},
 });
 
-let layout = classes => (
-	<Box>
-		<Head>
-			<title>My page title</title>
-			<meta
-				name="viewport"
-				content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"
-			/>
-		</Head>
-		<CssBaseline />
-		<AppBar className={classes.appBar}>
-			<Toolbar>
-				<Typography variant="h4">Flash Card Maker</Typography>
-				<Box mr={5} style={{ position: "absolute", right: 0 }}>
-					<Link href="/study">
-						<Button variant="contained">Study</Button>
-					</Link>
-					<Link href="/tables">
-						<Button variant="contained">Tables</Button>
-					</Link>
-					<Link href="/cards">
-						<Button variant="contained">Cards</Button>
-					</Link>
-					<Link href="/">
-						<Button variant="contained">Add</Button>
-					</Link>
-				</Box>
-			</Toolbar>
-		</AppBar>
-	</Box>
-);
+function layout(classes) {
+	return (
+		<Box mb={10}>
+			<Head>
+				<title>My page title</title>
+				<meta
+					name="viewport"
+					content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"
+				/>
+			</Head>
+			<CssBaseline />
+			<AppBar className={classes.appBar}>
+				<Toolbar>
+					<Typography variant="h4">Flash Card Maker</Typography>
+					<Box mr={5} style={{ position: "absolute", right: 0 }}>
+						<Link href="/study">
+							<Button variant="contained">Study</Button>
+						</Link>
+						<Link href="/tables">
+							<Button variant="contained">Tables</Button>
+						</Link>
+						<Link href="/cards">
+							<Button variant="contained">Cards</Button>
+						</Link>
+						<Link href="/">
+							<Button variant="contained">Add</Button>
+						</Link>
+					</Box>
+				</Toolbar>
+			</AppBar>
+		</Box>
+	);
+}
 
 export default withStyles(styles(theme))(layout);

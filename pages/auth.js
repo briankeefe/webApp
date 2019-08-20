@@ -3,6 +3,7 @@ import * as firebase from "firebase";
 import { createMuiTheme } from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
 import react, { useState, useEffect } from "react";
+import Layout from "../src/universal/layout";
 
 const theme = createMuiTheme({
 	spacing: factor => [0, 4, 8, 16, 32, 64][factor],
@@ -63,12 +64,17 @@ function AuthPage(props) {
 	if (user) {
 		return (
 			<div>
+				<Layout />
 				<p>Current User: {user.email}</p>
 				<button onClick={logout}>Log out</button>
 			</div>
 		);
 	}
-	return <button onClick={login}>Log in</button>;
+	return (<div>
+		<Layout />
+		<button onClick={login}>Log in</button>
+	</div> 
+	);
 }
 
 export default withStyles(styles(theme))(AuthPage);
