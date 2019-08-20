@@ -19,12 +19,18 @@ const port = 3001;
 const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
-const schema = new Schema({
+let schema = new Schema({
 	word: String,
 	pos: String,
 	def: String,
 });
 const Card = mongoose.model("Card", schema);
+schema = new Schema({
+	FirstName: String,
+	LastName: String,
+	Stacks: Object,
+});
+const Person = mongoose.model("Person", schema);
 // mongodb+srv://new-user:123@cluster0-gzyjc.mongodb.net/flashcards?retryWrites=true&w=majority
 // mongodb://localhost:27017/test
 mongoose.connect(
@@ -72,6 +78,25 @@ app.delete("/word", (req, res) => {
 		console.log("collection removed");
 		res.send("ALL DELETED");
 	});
+});
+
+app.post("/person", (req, res) => {
+	let person = new Person({
+		FirstName: "Sample",
+		LastName: "Person",
+		Stacks: undefined,
+	});
+	person.save();
+	res.send("myes");
+});
+
+app.put("/person", (req, res) => {
+	let search = Person.find().size;
+	if (search == null || search == undefined) {
+		res.send("oops");
+	} else {
+		res.send("yes, " + search);
+	}
 });
 
 app.listen(port, () => {

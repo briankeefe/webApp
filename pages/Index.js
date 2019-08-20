@@ -26,6 +26,8 @@ import Word from "../models/Word.js";
 import { black } from "ansi-colors";
 import Layout from "../src/universal/layout";
 import axios from "axios";
+import { useAuthState } from "react-firebase-hooks/auth";
+import firebase, { auth } from "firebase";
 
 const theme = createMuiTheme({
 	spacing: factor => [0, 4, 8, 16, 32, 64][factor],
@@ -77,6 +79,9 @@ function IndexPage(props) {
 	const [cards, cardSet] = useState(arr);
 	const [cur, curSet] = useState(0);
 	const fetch = require("node-fetch");
+
+	
+
 
 	useEffect(() => {
 		console.log("CONNECTING");
