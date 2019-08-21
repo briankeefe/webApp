@@ -1,3 +1,13 @@
+# Flashcards
+
+Made as a side project to learn React, React Hooks, Firebase, Mongodb, UX, Etc.
+
+### Author:
+Brian Keefe
+
+### Collaborators:
+David Keefe
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
