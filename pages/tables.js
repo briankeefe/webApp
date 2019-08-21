@@ -4,8 +4,10 @@ import { createMuiTheme, Typography, Box } from "@material-ui/core";
 import Layout from "../src/universal/layout";
 import { white } from "ansi-colors";
 import * as firebase from "firebase";
-import react, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Router from "next/router";
+import Launch from "../src/universal/launchFirebase";
 const theme = createMuiTheme({
 	spacing: factor => [0, 4, 8, 16, 32, 64][factor],
 });
@@ -29,22 +31,40 @@ const styles = theme => ({
 
 function TablesPage(props) {
 	const { classes } = props;
+	Launch();
+	let running = firebase.apps.length;
+	let s = running === 1 ? "FIREBASE RUNNING" : "FIREBASE NOT RUNNING";
 	const [user, loading, error] = useAuthState(firebase.auth());
-	useEffect(() => {
-		let running = firebase.apps.length;
-		let s = running === 1 ? "FIREBASE RUNNING" : "FIREBASE NOT RUNNING";
-		console.log(s);
-		if (running) {
+	console.log(s);
+	if (running) {
+		if (user !== null && user.email !== null) {
 			console.log(user.email);
+		} else {
+			useEffect(() => {
+				Router.push({
+					pathname: "/auth",
+				});
+			});
+
+			return (
+				<Box className={classes.outerBox}>
+					<Layout />
+					<Box pl={2}>
+						<Typography style={{ color: "white" }} variant="h4">
+							Non-Authenticated Tables Page
+						</Typography>
+					</Box>
+				</Box>
+			);
 		}
-	});
+	}
 
 	return (
 		<Box className={classes.outerBox}>
 			<Layout />
 			<Box pl={2}>
 				<Typography style={{ color: "white" }} variant="h4">
-					Template For Table Page
+					Authenticated Tables Page
 				</Typography>
 			</Box>
 		</Box>

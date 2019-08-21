@@ -6,6 +6,8 @@ import { createMuiTheme } from "@material-ui/core";
 import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
 import Link from "next/link";
 import { white } from "ansi-colors";
+import * as firebase from "firebase";
+import firebaseConfig from "../../config/firebaseConfig";
 const theme = createMuiTheme({
 	spacing: factor => [0, 4, 8, 16, 32, 64][factor],
 });
@@ -18,6 +20,14 @@ const styles = theme => ({
 });
 
 function layout(classes) {
+	/**
+	 * Launch Firebase if it has yet to be
+	 * initialized.  Import the config with
+	 * the firebase client API
+	 */
+	if (!firebase.apps.length) {
+		firebase.initializeApp(firebaseConfig);
+	}
 	return (
 		<Box mb={10}>
 			<Head>

@@ -4,9 +4,9 @@ import { createMuiTheme, Box, Typography, Button } from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
 import react, { useState, useEffect } from "react";
 import Layout from "../src/universal/layout";
-
+import firebaseConfig from "../config/firebaseConfig";
 import { teal } from "@material-ui/core/colors";
-
+import Launch from "../src/universal/launchFirebase";
 const theme = createMuiTheme({
 	spacing: factor => [0, 4, 8, 16, 32, 64][factor],
 });
@@ -26,21 +26,7 @@ const styles = theme => ({
 
 function AuthPage(props) {
 	const { classes } = props;
-
-	if (!firebase.apps.length) {
-		let firebaseConfig = {
-			apiKey: "AIzaSyAwMIqSwJE9iL0ZlWyd3hrepk5Mymn7lSI",
-			authDomain: "flashcards-cda38.firebaseapp.com",
-			databaseURL: "https://flashcards-cda38.firebaseio.com",
-			projectId: "flashcards-cda38",
-			storageBucket: "flashcards-cda38.appspot.com",
-			messagingSenderId: "872718028889",
-			appId: "1:872718028889:web:a95585059bf6d551",
-		};
-		// Initialize Firebase
-		firebase.initializeApp(firebaseConfig);
-	}
-
+	Launch();
 	const [user, loading, error] = useAuthState(firebase.auth());
 
 	const login = () => {
@@ -55,9 +41,12 @@ function AuthPage(props) {
 
 	if (loading) {
 		return (
-			<div>
-				<Typography>Initialising User...</Typography>
-			</div>
+			<Box>
+				<Layout />
+				<Typography style={{ color: "white" }} variant="h3">
+					Initialising User...
+				</Typography>
+			</Box>
 		);
 	}
 
