@@ -43,6 +43,7 @@ function TablesPage(props) {
 			useEffect(() => {
 				Router.push({
 					pathname: "/auth",
+					query: { fail: true },
 				});
 			});
 
