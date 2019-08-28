@@ -29,14 +29,12 @@ function AuthPage(props) {
 	const { classes } = props;
 	Launch();
 	const router = useRouter();
-	const [alerted, setAlerted] = useState(false);
 	console.log(router.query);
-	useLayoutEffect(() => {
-		if (router.query.fail === "true" && !alerted) {
+	useEffect(() => {
+		if (router.query.fail === "true") {
 			alert("PLEASE LOGIN TO ACCESS THIS PAGE");
-			setAlerted(true);
 		}
-	});
+	}, []);
 
 	const [user, loading, error] = useAuthState(firebase.auth());
 
