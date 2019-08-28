@@ -36,7 +36,7 @@ function TablesPage(props) {
 	let s = running === 1 ? "FIREBASE RUNNING" : "FIREBASE NOT RUNNING";
 	const [user, loading, error] = useAuthState(firebase.auth());
 	console.log(s);
-	if (running) {
+	useEffect(() => {
 		if (user !== null && user.email !== null) {
 			console.log(user.email);
 		} else {
@@ -44,18 +44,8 @@ function TablesPage(props) {
 				pathname: "/auth",
 				query: { fail: true },
 			});
-			return (
-				<Box className={classes.outerBox}>
-					<Layout />
-					<Box pl={2}>
-						<Typography style={{ color: "white" }} variant="h4">
-							Non-Authenticated Tables Page
-						</Typography>
-					</Box>
-				</Box>
-			);
 		}
-	}
+	}, []);
 
 	return (
 		<Box className={classes.outerBox}>
