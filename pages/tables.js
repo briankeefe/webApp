@@ -40,13 +40,10 @@ function TablesPage(props) {
 		if (user !== null && user.email !== null) {
 			console.log(user.email);
 		} else {
-			useEffect(() => {
-				Router.push({
-					pathname: "/auth",
-					query: { fail: true },
-				});
+			Router.push({
+				pathname: "/auth",
+				query: { fail: true },
 			});
-
 			return (
 				<Box className={classes.outerBox}>
 					<Layout />
