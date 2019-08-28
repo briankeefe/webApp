@@ -1,12 +1,25 @@
 import { useAuthState } from "react-firebase-hooks/auth";
 import * as firebase from "firebase";
-import { createMuiTheme, Box, Typography, Button } from "@material-ui/core";
+import {
+	createMuiTheme,
+	Box,
+	Typography,
+	Button,
+	Input,
+	FormGroup,
+} from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
 import react, { useState, useEffect } from "react";
 import Layout from "../src/universal/layout";
 
 import { teal } from "@material-ui/core/colors";
+<<<<<<< Updated upstream
 
+=======
+import Launch from "../src/universal/launchFirebase";
+import { useRouter } from "next/router";
+import "../css/style.scss";
+>>>>>>> Stashed changes
 const theme = createMuiTheme({
 	spacing: factor => [0, 4, 8, 16, 32, 64][factor],
 });
@@ -83,9 +96,16 @@ function AuthPage(props) {
 	return (
 		<Box className={classes.tealBox} px={2} py={2}>
 			<Layout />
+			<Box pt={10} />
 			<Button variant="contained" onClick={login}>
 				Log in
 			</Button>
+			<Box p={3}>
+				<FormGroup>
+					<Input>UserName</Input>
+					<Input>Password</Input>
+				</FormGroup>
+			</Box>
 		</Box>
 	);
 }
