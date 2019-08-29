@@ -1,12 +1,14 @@
-.this-box {
-	background-color: white;
-	margin: auto;
-	width: 50%;
-	.MuiButton-root {
-		margin-top: 24px;
+.auth-login {
+	.MuiInputLabel-root {
+		margin-top: 16px;
 	}
-}
-
-.MuiInputLabel-root {
-	margin-top: 16px;
+	.MuiTextField-root {
+		margin-left: 100px;
+		margin-right: 100px;
+		width: 60%;
+	}
+	.MuiButton-root {
+		width: 100%;
+		margin-top: 16px;
+	}
 }
