@@ -65,6 +65,7 @@ function AuthPage(props) {
 		return (
 			<Box>
 				<Layout />
+				<Box mt={10} />
 				<Typography style={{ color: "white" }} variant="h3">
 					Initialising User...
 				</Typography>
@@ -117,21 +118,6 @@ function AuthPage(props) {
 			</Box>
 		);
 	}
-	return (
-		<Box className={classes.tealBox} px={2} py={2}>
-			<Layout />
-			<Box pt={10} />
-			<Button variant="contained" onClick={login}>
-				Log in
-			</Button>
-			<Box p={3}>
-				<FormGroup>
-					<Input>UserName</Input>
-					<Input>Password</Input>
-				</FormGroup>
-			</Box>
-		</Box>
-	);
 }
 
 export default withStyles(styles(theme))(AuthPage);
