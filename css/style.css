@@ -1,12 +1,8 @@
-.auth-login .MuiInputLabel-root {
-  margin-top: 16px;
-}
-.auth-login .MuiTextField-root {
-  margin-left: 100px;
-  margin-right: 100px;
-  width: 60%;
-}
 .auth-login .MuiButton-root {
   width: 100%;
   margin-top: 16px;
+}
+.auth-login .MuiTextField-root {
+  margin-top: 8px;
+  width: 100%;
 }

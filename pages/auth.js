@@ -21,6 +21,7 @@ import { teal } from "@material-ui/core/colors";
 import Launch from "../src/universal/launchFirebase";
 import { useRouter } from "next/router";
 import "../css/style.scss";
+import Link from "next/link";
 const theme = createMuiTheme({
 	spacing: factor => [0, 4, 8, 16, 32, 64][factor],
 });
@@ -88,7 +89,10 @@ function AuthPage(props) {
 								<Typography>
 									Current User: {user.email}
 								</Typography>
-								<Button variant="contained" onClick={logout}>
+								<Button
+									color="secondary"
+									variant="contained"
+									onClick={logout}>
 									Log out
 								</Button>
 							</CardContent>
@@ -106,10 +110,11 @@ function AuthPage(props) {
 						<Card>
 							<CardContent>
 								<form>
-									<InputLabel>User Name</InputLabel>
-									<TextField />
-									<InputLabel>Password</InputLabel>
-									<TextField type="Password" />
+									<TextField label="User Name" />
+									<TextField
+										label="Password"
+										type="Password"
+									/>
 								</form>
 								<Button
 									color="primary"
@@ -117,6 +122,13 @@ function AuthPage(props) {
 									onClick={login}>
 									Log In
 								</Button>
+								<Link href="/register">
+									<Button
+										color="secondary"
+										variant="contained">
+										Register
+									</Button>
+								</Link>
 							</CardContent>
 						</Card>
 					</Grid>
