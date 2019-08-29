@@ -2,11 +2,16 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import * as firebase from "firebase";
 import {
 	createMuiTheme,
+	Card,
 	Box,
 	Typography,
 	Button,
 	Input,
 	FormGroup,
+	InputLabel,
+	TextField,
+	CardContent,
+	Grid,
 } from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
 import react, { useState, useEffect, useLayoutEffect } from "react";
@@ -83,6 +88,32 @@ function AuthPage(props) {
 				<Button variant="contained" onClick={logout}>
 					Log out
 				</Button>
+			</Box>
+		);
+	} else {
+		return (
+			<Box className={classes.tealBox} px={2} py={2}>
+				<Layout />
+				<Grid className="auth-login" justify="center" container>
+					<Grid item xs={12} sm={6} md={4}>
+						<Card>
+							<CardContent>
+								<form>
+									<InputLabel>User Name</InputLabel>
+									<TextField />
+									<InputLabel>Password</InputLabel>
+									<TextField type="Password" />
+								</form>
+								<Button
+									color="primary"
+									variant="contained"
+									onClick={login}>
+									Log In
+								</Button>
+							</CardContent>
+						</Card>
+					</Grid>
+				</Grid>
 			</Box>
 		);
 	}
