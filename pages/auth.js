@@ -81,11 +81,20 @@ function AuthPage(props) {
 		return (
 			<Box className={classes.tealBox} px={2} py={2}>
 				<Layout />
-				<Box></Box>
-				<Typography>Current User: {user.email}</Typography>
-				<Button variant="contained" onClick={logout}>
-					Log out
-				</Button>
+				<Grid className="auth-login" justify="center" container>
+					<Grid item xs={12} sm={6} md={4}>
+						<Card>
+							<CardContent>
+								<Typography>
+									Current User: {user.email}
+								</Typography>
+								<Button variant="contained" onClick={logout}>
+									Log out
+								</Button>
+							</CardContent>
+						</Card>
+					</Grid>
+				</Grid>
 			</Box>
 		);
 	} else {
