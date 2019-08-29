@@ -71,20 +71,17 @@ function AuthPage(props) {
 				</Typography>
 			</Box>
 		);
-	}
-
-	if (error) {
+	} else if (error) {
 		return (
 			<div>
 				<Typography>Error: {error}</Typography>
 			</div>
 		);
-	}
-
-	if (user) {
+	} else if (user) {
 		return (
 			<Box className={classes.tealBox} px={2} py={2}>
 				<Layout />
+				<Box></Box>
 				<Typography>Current User: {user.email}</Typography>
 				<Button variant="contained" onClick={logout}>
 					Log out
