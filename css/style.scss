@@ -1,3 +1,12 @@
-.MuiInput-root {
+.this-box {
+	background-color: white;
 	margin: auto;
+	width: 50%;
+	.MuiButton-root {
+		margin-top: 24px;
+	}
+}
+
+.MuiInputLabel-root {
+	margin-top: 16px;
 }

@@ -7,6 +7,7 @@ import {
 	Button,
 	Input,
 	FormGroup,
+	InputLabel,
 } from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
 import react, { useState, useEffect, useLayoutEffect } from "react";
@@ -65,42 +66,49 @@ function AuthPage(props) {
 				</Typography>
 			</Box>
 		);
-	}
-
-	if (error) {
+	} else if (error) {
 		return (
 			<div>
 				<Typography>Error: {error}</Typography>
 			</div>
 		);
-	}
-
-	if (user) {
+	} else if (user) {
 		return (
 			<Box className={classes.tealBox} px={2} py={2}>
 				<Layout />
+				<Box></Box>
 				<Typography>Current User: {user.email}</Typography>
 				<Button variant="contained" onClick={logout}>
 					Log out
 				</Button>
 			</Box>
 		);
-	}
-	return (
-		<Box className={classes.tealBox} px={2} py={2}>
-			<Layout />
-			<Box pt={10} />
-			<Button variant="contained" onClick={login}>
-				Log in
-			</Button>
-			<Box p={3}>
-				<FormGroup>
-					<Input>UserName</Input>
-					<Input>Password</Input>
-				</FormGroup>
+	} else {
+		return (
+			<Box className={classes.tealBox} px={2} py={2}>
+				<Layout />
+				<Box pt={10} />
+				<Button variant="contained" onClick={login}>
+					Log in
+				</Button>
+				<Box p={4} className="this-box">
+					<FormGroup>
+						<InputLabel>UserName</InputLabel>
+						<Input>UserName</Input>
+						<InputLabel>Password</InputLabel>
+						<Input>Password</Input>
+						<Button
+							color="primary"
+							variant="contained"
+							onClick={login}>
+							Log In
+						</Button>
+					</FormGroup>
+					<FormGroup></FormGroup>
+				</Box>
 			</Box>
-		</Box>
-	);
+		);
+	}
 }
 
 export default withStyles(styles(theme))(AuthPage);
