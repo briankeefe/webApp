@@ -51,7 +51,7 @@ function CardsPage(props) {
 
 	const ShowCard = word => (
 		<Paper className={classes.paper}>
-			<Box p={2}>
+			<Box className="show-card-box" p={2}>
 				<Typography variant="h5">
 					<strong>Word: {word.word}</strong>
 				</Typography>
