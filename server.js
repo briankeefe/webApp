@@ -34,7 +34,7 @@ const Person = mongoose.model("Person", schema);
 // mongodb+srv://new-user:123@cluster0-gzyjc.mongodb.net/flashcards?retryWrites=true&w=majority
 // mongodb://localhost:27017/test
 mongoose.connect(
-	"mongodb+srv://new-user:123@cluster0-gzyjc.mongodb.net/flashcards?retryWrites=true&w=majority",
+	"mongodb://localhost:27017/MyDb",
 	{
 		useNewUrlParser: true,
 	}
