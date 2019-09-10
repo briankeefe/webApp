@@ -26,6 +26,7 @@ const styles = theme => ({
 
 function StudyPage(props) {
 	const { classes } = props;
+	
 	return (
 		<Box className={classes.outerBox}>
 			<Layout />

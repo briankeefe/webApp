@@ -44,7 +44,7 @@ function TablesPage(props) {
 		} else {
 			console.log("No user yet...");
 			Router.push({
-				path: "/auth",
+				pathname: "/alpha",
 				query: { fail: true },
 			});
 		}
