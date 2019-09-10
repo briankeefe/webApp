@@ -54,8 +54,11 @@ function layout(classes) {
 						<Link href="/">
 							<Button variant="contained">Add</Button>
 						</Link>
-						<Link href="/auth">
+						<Link href="/cards">
 							<Button variant="contained">Auth</Button>
+						</Link>
+						<Link href="/auth">
+							<Button variant="contained">Button</Button>
 						</Link>
 					</Box>
 				</Toolbar>

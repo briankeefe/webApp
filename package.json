@@ -28,6 +28,10 @@
 		"react-router-dom": "^5.0.1"
 	},
 	"scripts": {
-		"dev": "nodemon server.js"
-	}
+		"dev": "nodemon server.js",
+		"build": "next build",
+		"start": "next start",
+		"go": "next"
+	},
+	"private": false
 }
