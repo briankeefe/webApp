@@ -37,14 +37,18 @@ function TablesPage(props) {
 	const [user, loading, error] = useAuthState(firebase.auth());
 	console.log(s);
 	useEffect(() => {
+		console.log("TABLE PAGE");
 		if (user !== null && user.email !== null) {
+			console.log("Here is the user email: ");
 			console.log(user.email);
 		} else {
+			console.log("No user yet...");
 			Router.push({
-				pathname: "/auth",
+				path: "/auth",
 				query: { fail: true },
 			});
 		}
+		
 	}, []);
 
 	return (

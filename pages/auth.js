@@ -18,10 +18,10 @@ import react, { useState, useEffect, useLayoutEffect } from "react";
 import Layout from "../src/universal/layout";
 import firebaseConfig from "../config/firebaseConfig";
 import { teal } from "@material-ui/core/colors";
-import Launch from "../src/universal/launchFirebase";
 import { useRouter } from "next/router";
 import "../css/style.scss";
 import Link from "next/link";
+import Launch from "../src/universal/launchFirebase.js";
 const theme = createMuiTheme({
 	spacing: factor => [0, 4, 8, 16, 32, 64][factor],
 });

@@ -8,6 +8,7 @@ import Link from "next/link";
 import { white } from "ansi-colors";
 import * as firebase from "firebase";
 import firebaseConfig from "../../config/firebaseConfig";
+import Router from "next/router";
 const theme = createMuiTheme({
 	spacing: factor => [0, 4, 8, 16, 32, 64][factor],
 });
@@ -20,14 +21,6 @@ const styles = theme => ({
 });
 
 function layout(classes) {
-	/**
-	 * Launch Firebase if it has yet to be
-	 * initialized.  Import the config with
-	 * the firebase client API
-	 */
-	if (!firebase.apps.length) {
-		firebase.initializeApp(firebaseConfig);
-	}
 	return (
 		<Box mb={10}>
 			<Head>
@@ -57,9 +50,10 @@ function layout(classes) {
 						<Link href="/cards">
 							<Button variant="contained">Auth</Button>
 						</Link>
-						<Link href="/auth">
-							<Button variant="contained">Button</Button>
-						</Link>
+						<Button onClick={()=> {
+							console.log("Register Button Clicked");
+							Router.push("/auth");
+						}} variant="contained">Register</Button>
 					</Box>
 				</Toolbar>
 			</AppBar>
