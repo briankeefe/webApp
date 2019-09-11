@@ -44,8 +44,8 @@ function TablesPage(props) {
 		} else {
 			console.log("No user yet...");
 			Router.push({
-				path: "/auth",
-				query: { fail: true },
+				pathname: "/auth",
+				query: { fail: true }
 			});
 		}
 		
@@ -53,7 +53,6 @@ function TablesPage(props) {
 
 	return (
 		<Box className={classes.outerBox}>
-			<Layout />
 			<Box pl={2}>
 				<Typography style={{ color: "white" }} variant="h4">
 					Authenticated Tables Page

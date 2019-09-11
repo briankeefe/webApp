@@ -6,8 +6,6 @@ import { createMuiTheme } from "@material-ui/core";
 import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
 import Link from "next/link";
 import { white } from "ansi-colors";
-import * as firebase from "firebase";
-import firebaseConfig from "../../config/firebaseConfig";
 import Router from "next/router";
 const theme = createMuiTheme({
 	spacing: factor => [0, 4, 8, 16, 32, 64][factor],

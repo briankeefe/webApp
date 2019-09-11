@@ -65,7 +65,6 @@ function AuthPage(props) {
 	if (loading) {
 		return (
 			<Box>
-				<Layout />
 				<Box mt={10} />
 				<Typography style={{ color: "white" }} variant="h3">
 					Initialising User...
@@ -81,7 +80,6 @@ function AuthPage(props) {
 	} else if (user) {
 		return (
 			<Box className={classes.tealBox} px={2} py={2}>
-				<Layout />
 				<Grid className="auth-login" justify="center" container>
 					<Grid item xs={12} sm={6} md={4}>
 						<Card>
@@ -104,7 +102,6 @@ function AuthPage(props) {
 	} else {
 		return (
 			<Box className={classes.tealBox} px={2} py={2}>
-				<Layout />
 				<Grid className="auth-login" justify="center" container>
 					<Grid item xs={12} sm={6} md={4}>
 						<Card>

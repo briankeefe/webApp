@@ -2,7 +2,7 @@
 	"name": "web-app",
 	"version": "1.0.0",
 	"description": "Side Project",
-	"main": "/pages/index.js",
+	"main": "/pages/_app.js",
 	"repository": "https://github.com/briankeefe/webApp.git",
 	"author": "briankeefe <briankeefe@umass.edu>",
 	"license": "MIT",

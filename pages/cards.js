@@ -63,7 +63,6 @@ function CardsPage(props) {
 
 	return (
 		<Box className={classes.cardBox} style={{ minHeight: "100vh" }}>
-			<Layout />
 			<Container>
 				<Box mt={10}>
 					<Grid container spacing={2}>

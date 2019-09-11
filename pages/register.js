@@ -25,7 +25,6 @@ function RegistrationPage(props) {
 	const { classes } = props;
 	return (
 		<Box className={classes.outerBox}>
-			<Layout />
 			<Typography>Testing</Typography>
 		</Box>
 	);

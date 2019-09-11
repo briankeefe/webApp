@@ -138,7 +138,6 @@ function IndexPage(props) {
 
 	const SampleCard = (word, def, cur, pos) => (
 		<Box my={5} className={classes.outer}>
-			<Layout />
 			<Grid justify="center" container>
 				<Grid item xs={12} sm={6} md={4}>
 					<Card className={classes.card}>
