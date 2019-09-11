@@ -82,7 +82,7 @@ function AuthPage(props) {
 			<Box className={classes.tealBox} px={2} py={2}>
 				<Grid className="auth-login" justify="center" container>
 					<Grid item xs={12} sm={6} md={4}>
-						<Card>
+						<Card className="login-card">
 							<CardContent>
 								<Typography>
 									Current User: {user.email}
@@ -101,10 +101,10 @@ function AuthPage(props) {
 		);
 	} else {
 		return (
-			<Box className={classes.tealBox} px={2} py={2}>
+			<Box className={classes.tealBox} px={2}>
 				<Grid className="auth-login" justify="center" container>
 					<Grid item xs={12} sm={6} md={4}>
-						<Card>
+						<Card className="login-card">
 							<CardContent>
 								<form>
 									<TextField label="User Name" />

@@ -28,7 +28,7 @@ function StudyPage(props) {
 	const { classes } = props;
 	return (
 		<Box className={classes.outerBox}>
-			<Box pt={2} pl={2}>
+			<Box mt={10} pt={2} pl={2}>
 				<Typography style={{ color: "white" }} variant="h4">
 					Template For Study Page
 				</Typography>

@@ -64,7 +64,7 @@ function CardsPage(props) {
 	return (
 		<Box className={classes.cardBox} style={{ minHeight: "100vh" }}>
 			<Container>
-				<Box mt={10}>
+				<Box>
 					<Grid container spacing={2}>
 						{cards.map(word => (
 							<Grid item xs={12} sm={6} md={3}>
