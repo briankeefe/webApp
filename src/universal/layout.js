@@ -45,13 +45,9 @@ function layout(classes) {
 						<Link href="/">
 							<Button variant="contained">Add</Button>
 						</Link>
-						<Link href="/cards">
+						<Link href="/auth">
 							<Button variant="contained">Auth</Button>
 						</Link>
-						<Button onClick={()=> {
-							console.log("Register Button Clicked");
-							Router.push("/auth");
-						}} variant="contained">Register</Button>
 					</Box>
 				</Toolbar>
 			</AppBar>
