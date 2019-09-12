@@ -41,25 +41,40 @@ const styles = theme => ({
 
 function AuthPage(props) {
 	const { classes } = props;
-	Launch();
 	const router = useRouter();
-	console.log(router.query);
 	useEffect(() => {
+		console.log(router.query);
 		if (router.query.fail === "true") {
 			alert("PLEASE LOGIN TO ACCESS THIS PAGE");
 		}
 	}, []);
 
 	const [user, loading, error] = useAuthState(firebase.auth());
+	const [email, setEmail] = useState("");
+	const [pass, setPass] = useState("");
+
 
 	const login = () => {
+		console.log("Attempting Login");
+		console.log("Email: " + email);
+		console.log("Password Length: " + pass.length);
 		firebase
 			.auth()
-			.signInWithEmailAndPassword("briguy100@gmail.com", "111397");
-	};
+			.signInWithEmailAndPassword(email, pass).catch((error) => {
+				alert("WRONG PASSWORD" + error);
+			});
 
+	};
 	const logout = () => {
 		firebase.auth().signOut();
+	};
+
+	const handleEmail = (e) => {
+		setEmail(e.target.value);
+	};
+
+	const handlePass = (e) => {
+		setPass(e.target.value);
 	};
 
 	if (loading) {
@@ -107,18 +122,21 @@ function AuthPage(props) {
 						<Card className="login-card">
 							<CardContent>
 								<form>
-									<TextField label="User Name" />
+									<TextField value={email} onChange={handleEmail} label="User Name" />
 									<TextField
+										value={pass}
+										onChange={handlePass}
 										label="Password"
 										type="Password"
 									/>
+									<Button
+										color="primary"
+										variant="contained"
+										onClick={login}>
+										Log In
+									</Button>
 								</form>
-								<Button
-									color="primary"
-									variant="contained"
-									onClick={login}>
-									Log In
-								</Button>
+
 								<Link href="/register">
 									<Button
 										color="secondary"

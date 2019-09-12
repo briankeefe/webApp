@@ -23,6 +23,7 @@ let schema = new Schema({
 	word: String,
 	pos: String,
 	def: String,
+	usr: String
 });
 const Card = mongoose.model("Card", schema);
 schema = new Schema({
@@ -55,6 +56,7 @@ app.post("/word", (req, res) => {
 		word: req.body.word,
 		pos: req.body.pos,
 		def: req.body.def,
+		usr: req.body.usr
 	});
 	word.save();
 	Card.find(function(err, words) {

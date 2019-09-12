@@ -39,8 +39,9 @@ function TablesPage(props) {
 	useEffect(() => {
 		console.log("TABLE PAGE");
 		if (user !== null && user.email !== null) {
-			console.log("Here is the user email: ");
-			console.log(user.email);
+			user.getIdToken().then((obj) => {
+				console.log(obj);
+			});
 		} else {
 			console.log("No user yet...");
 			Router.push({

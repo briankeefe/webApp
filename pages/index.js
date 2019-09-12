@@ -16,6 +16,8 @@ import { teal, blue } from "@material-ui/core/colors/";
 import Word from "../models/Word.js";
 import Layout from "../src/universal/layout";
 import axios from "axios";
+import { useAuthState } from "react-firebase-hooks/auth";
+import * as firebase from "firebase";
 
 const theme = createMuiTheme({
 	spacing: factor => [0, 4, 8, 16, 32, 64][factor],
@@ -68,6 +70,8 @@ function IndexPage(props) {
 	const [cur, curSet] = useState(0);
 	const fetch = require("node-fetch");
 
+	const [user, loading, error] = useAuthState(firebase.auth());
+
 	useEffect(() => {
 		console.log("CONNECTING");
 		async function fetchData() {
@@ -97,7 +101,7 @@ function IndexPage(props) {
 		console.log("curDEC");
 	};
 
-	const addingFunc = () => {
+	async function addingFunc() {
 		let nextWord = new Word(
 			document.getElementById("fieldOne").value,
 			document.getElementById("definition").value,
@@ -110,6 +114,8 @@ function IndexPage(props) {
 		}
 		cardSet([nextWord].concat(cards));
 		console.log(cards);
+		let id = await user.getIdToken();
+		
 		fetch("http://localhost:3001/word", {
 			method: "POST",
 			headers: {
@@ -120,13 +126,14 @@ function IndexPage(props) {
 				word: document.getElementById("fieldOne").value,
 				pos: document.getElementById("fieldTwo").value,
 				def: document.getElementById("definition").value,
+				usr: id
 			}),
 		});
 		console.log("end");
 		document.getElementById("fieldOne").value = "";
 		document.getElementById("definition").value = "";
 		document.getElementById("fieldTwo").value = "";
-	};
+	}
 
 	const partOfSpeech = word => {
 		if (word === "" || word === undefined) {
