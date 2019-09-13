@@ -74,6 +74,15 @@ app.get("/word", (req, res) => {
 	});
 });
 
+app.get("/userWords", (req, res) => {
+	console.log(req.query);
+	Card.find({usr: req.query.usr}, (err, words) => {
+		if (err) return console.error(err);
+		res.send(words);
+		console.log(words);
+	});
+});
+
 app.delete("/word", (req, res) => {
 	Card.remove({}, function(err) {
 		if (err) return console.error(err);

@@ -114,7 +114,7 @@ function IndexPage(props) {
 		}
 		cardSet([nextWord].concat(cards));
 		console.log(cards);
-		let id = await user.getIdToken();
+		let id = await user.email;
 		
 		fetch("http://localhost:3001/word", {
 			method: "POST",

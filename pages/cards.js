@@ -6,6 +6,10 @@ import { teal } from "@material-ui/core/colors";
 import { Word } from "../models/Word";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import * as firebase from "firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import Router from "next/router";
+
 
 const theme = createMuiTheme({
 	spacing: factor => [0, 4, 8, 16, 32, 64][factor],
@@ -30,12 +34,36 @@ function CardsPage(props) {
 	const { classes } = props;
 	let arr = [];
 	const [cards, cardSet] = useState(arr);
+	const [user, loading, error] = useAuthState(firebase.auth());
+	useEffect(() => {
+		console.log("TABLE PAGE");
+		if (user !== null && user.email !== null) {
+			user.getIdToken().then((obj) => {
+				console.log(obj);
+			});
+		} else {
+			console.log("No user yet...");
+			Router.push({
+				pathname: "/auth",
+				query: { fail: true }
+			});
+		}
+		
+	}, []);
 	useEffect(() => {
 		console.log("CONNECTING");
 		async function fetchData() {
 			// You can await here
-			const response = await axios("http://localhost:3001/word");
-			cardSet(response.data);
+			let id = await user.email;
+			console.log("ID: " + id);
+			const params = new URLSearchParams();
+			params.append("usr", id);
+			axios("http://localhost:3001/userWords", {params: {usr: id}}).then((response) => {
+				cardSet(response.data);
+				console.log(response);
+			}).catch((error) => {
+				console.log(error);
+			});
 		}
 		fetchData();
 		console.log("CONNECTED");
