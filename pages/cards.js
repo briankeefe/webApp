@@ -30,16 +30,25 @@ const styles = theme => ({
 	},
 });
 
+const sleep = (milliseconds) => {
+	console.log("SLEEPING FOR "+ milliseconds + " milliseconds.");
+	return new Promise(resolve => setTimeout(resolve, milliseconds));
+};
+
 function CardsPage(props) {
 	const { classes } = props;
 	let arr = [];
 	const [cards, cardSet] = useState(arr);
 	const [user, loading, error] = useAuthState(firebase.auth());
+	const [count, setCount] = useState(0);
+	const countInc = () => {
+		setCount(count + 1);
+	};
 	useEffect(() => {
 		console.log("TABLE PAGE");
 		if (user !== null && user.email !== null) {
 			user.getIdToken().then((obj) => {
-				console.log(obj);
+				console.log("User: " + user.email);
 			});
 		} else {
 			console.log("No user yet...");
@@ -48,26 +57,44 @@ function CardsPage(props) {
 				query: { fail: true }
 			});
 		}
-		
+
 	}, []);
 	useEffect(() => {
 		console.log("CONNECTING");
 		async function fetchData() {
 			// You can await here
-			let id = await user.email;
+			console.log("BEFORE SLEEP");
+			let id = await sleep(100).then(() => {
+				for(let i = 0; i < 3; ++i){
+					try{
+						return user.email;
+					}catch(error){
+						console.log("Trying again");
+						sleep(500);
+					}
+				}
+			});
+			console.log("AFTER SLEEP");
 			console.log("ID: " + id);
 			const params = new URLSearchParams();
 			params.append("usr", id);
-			axios("http://localhost:3001/userWords", {params: {usr: id}}).then((response) => {
+			axios("http://localhost:3001/userWords", { params: { usr: id } }).then((response) => {
 				cardSet(response.data);
 				console.log(response);
 			}).catch((error) => {
 				console.log(error);
 			});
 		}
-		fetchData();
-		console.log("CONNECTED");
-	}, []);
+
+		try {
+			fetchData();
+			console.log("CONNECTED");
+		} catch (error) {
+			countInc();
+			console.log("ERROR: " + error);
+		}
+
+	},[]);
 
 	const partOfSpeech = word => {
 		if (word === "" || word === undefined) {
