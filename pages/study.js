@@ -3,9 +3,7 @@ import { teal } from "@material-ui/core/colors";
 import { createMuiTheme, Typography, Box } from "@material-ui/core";
 import Layout from "../src/universal/layout";
 import { white } from "ansi-colors";
-const theme = createMuiTheme({
-	spacing: factor => [0, 4, 8, 16, 32, 64][factor],
-});
+import { theme, backgroundColor } from "../src/universal/theme";
 
 const styles = theme => ({
 	root: {
@@ -14,7 +12,7 @@ const styles = theme => ({
 		color: "white",
 	},
 	outerBox: {
-		backgroundColor: teal[500],
+		backgroundColor: backgroundColor,
 		padding: theme.spacing(3),
 		margin: "auto",
 		minHeight: "100vh",
@@ -28,7 +26,7 @@ function StudyPage(props) {
 	const { classes } = props;
 	return (
 		<Box className={classes.outerBox}>
-			<Box mt={10} pt={2} pl={2}>
+			<Box style={{marginTop: "100px"}} pt={2} pl={2}>
 				<Typography style={{ color: "white" }} variant="h4">
 					Template For Study Page
 				</Typography>

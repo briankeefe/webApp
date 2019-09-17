@@ -7,11 +7,7 @@ import EmailCheck from "../src/logic/EmailCheck.js";
 import { useState, useEffect } from "react";
 import Router, { useRouter } from "next/router";
 import * as firebase from "firebase";
-
-
-const theme = createMuiTheme({
-	spacing: factor => [0, 4, 8, 16, 32, 64][factor],
-});
+import { theme, backgroundColor } from "../src/universal/theme";
 
 const styles = theme => ({
 	root: {
@@ -20,7 +16,7 @@ const styles = theme => ({
 		color: "white",
 	},
 	outerBox: {
-		backgroundColor: teal[500],
+		backgroundColor: backgroundColor,
 		padding: theme.spacing(3),
 		margin: "auto",
 		minHeight: "100vh",
@@ -89,13 +85,11 @@ function RegistrationPage(props) {
 
 	return (
 		<Box className={classes.outerBox}>
-			<Box mt={10}>
-				<Typography variant="h3" style={{ color: "white" }}>This is the registration page</Typography>
-			</Box>
-			<Grid container justify="center">
+			<Grid container justify="center" style={{marginTop: "84px"}}>
 				<Grid item xs={12} sm={6} lg={4}>
 					<Card className="reg-login">
 						<CardContent>
+							<Typography variant="h4">Register</Typography>
 							<form>
 								<TextField error={emailErr} value={email} label={emailDesc} onChange={handleEmail} />
 								<TextField

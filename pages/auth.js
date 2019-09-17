@@ -22,9 +22,7 @@ import { useRouter } from "next/router";
 import "../css/style.scss";
 import Link from "next/link";
 import Launch from "../src/universal/launchFirebase.js";
-const theme = createMuiTheme({
-	spacing: factor => [0, 4, 8, 16, 32, 64][factor],
-});
+import { theme, backgroundColor } from "../src/universal/theme";
 
 const styles = theme => ({
 	root: {
@@ -33,7 +31,7 @@ const styles = theme => ({
 	},
 
 	tealBox: {
-		backgroundColor: teal[500],
+		backgroundColor: backgroundColor,
 		color: "white",
 		height: "100vh",
 	},
@@ -121,6 +119,7 @@ function AuthPage(props) {
 					<Grid item xs={12} sm={6} md={4}>
 						<Card className="login-card">
 							<CardContent>
+								<Typography variant="h4">Log In</Typography>
 								<form>
 									<TextField value={email} onChange={handleEmail} label="User Name" />
 									<TextField

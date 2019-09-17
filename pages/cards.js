@@ -9,11 +9,7 @@ import axios from "axios";
 import * as firebase from "firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Router from "next/router";
-
-
-const theme = createMuiTheme({
-	spacing: factor => [0, 4, 8, 16, 32, 64][factor],
-});
+import { theme, backgroundColor} from "../src/universal/theme";
 
 const styles = theme => ({
 	root: {
@@ -21,7 +17,7 @@ const styles = theme => ({
 		padding: theme.spacing(2),
 	},
 	cardBox: {
-		backgroundColor: teal[500],
+		backgroundColor: backgroundColor,
 		padding: theme.spacing(3),
 		margin: "auto",
 	},
