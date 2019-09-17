@@ -67,10 +67,12 @@ function RegistrationPage(props) {
 	};
 
 	const handleSubmit = () => {
-		if(!EmailCheck(email)){
+		if (!EmailCheck(email)) {
 			setEmailErr(true);
 			setEmailDesc("Invalid Email! Please try again...");
-		}else{
+		} else if (rePass !== pass) {
+			alert("Passwords do not match!");
+		} else {
 			console.log("dud");
 			firebase.auth().createUserWithEmailAndPassword(email, pass).catch((error) => {
 				console.log("ERROR::: " + error);
@@ -80,12 +82,12 @@ function RegistrationPage(props) {
 					pathname: "/auth",
 				});
 			});
-		}	
+		}
 	};
 
 	return (
 		<Box className={classes.outerBox}>
-			<Grid container justify="center" style={{marginTop: "84px"}}>
+			<Grid container justify="center" style={{ marginTop: "84px" }}>
 				<Grid item xs={12} sm={6} lg={4}>
 					<Card className="reg-login">
 						<CardContent>
@@ -117,7 +119,6 @@ function RegistrationPage(props) {
 					</Card>
 				</Grid>
 			</Grid>
-
 		</Box>
 	);
 }
