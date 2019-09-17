@@ -6,6 +6,8 @@ import { white } from "ansi-colors";
 import EmailCheck from "../src/logic/EmailCheck.js";
 import { useState, useEffect } from "react";
 import Router, { useRouter } from "next/router";
+import * as firebase from "firebase";
+
 
 const theme = createMuiTheme({
 	spacing: factor => [0, 4, 8, 16, 32, 64][factor],
@@ -73,8 +75,15 @@ function RegistrationPage(props) {
 			setEmailErr(true);
 			setEmailDesc("Invalid Email! Please try again...");
 		}else{
-			setEmailErr(false);
-			setEmailDesc("Valid Email! Thank you!");
+			console.log("dud");
+			firebase.auth().createUserWithEmailAndPassword(email, pass).catch((error) => {
+				console.log("ERROR::: " + error);
+				alert("Could not create user :(");
+			}).finally(() => {
+				Router.push({
+					pathname: "/auth",
+				});
+			});
 		}	
 	};
 
@@ -107,7 +116,7 @@ function RegistrationPage(props) {
 									color="primary"
 									variant="contained"
 									onClick={handleSubmit}>
-									Log In
+									Register
 								</Button>
 							</form>
 						</CardContent>
