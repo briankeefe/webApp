@@ -1,13 +1,13 @@
 import { withStyles } from "@material-ui/styles";
 import { teal } from "@material-ui/core/colors";
 import { createMuiTheme, Typography, Box } from "@material-ui/core";
-import Layout from "../src/universal/layout";
+import Layout from "../universal/layout";
 import { white } from "ansi-colors";
 import * as firebase from "firebase";
 import React, { useState, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Router from "next/router";
-import Launch from "../src/universal/launchFirebase";
+import Launch from "../universal/launchFirebase";
 const theme = createMuiTheme({
 	spacing: factor => [0, 4, 8, 16, 32, 64][factor],
 });
