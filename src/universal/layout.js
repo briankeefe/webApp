@@ -7,9 +7,10 @@ import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
 import Link from "next/link";
 import { white } from "ansi-colors";
 import Router from "next/router";
-const theme = createMuiTheme({
-	spacing: factor => [0, 4, 8, 16, 32, 64][factor],
-});
+import { blue, red } from "@material-ui/core/colors";
+import indigo from "@material-ui/core/colors/indigo";
+import pink from "@material-ui/core/colors/pink";
+import { theme } from "../universal/theme";
 
 const styles = theme => ({
 	root: {
@@ -29,7 +30,7 @@ function layout(classes) {
 				/>
 			</Head>
 			<CssBaseline />
-			<AppBar className={classes.appBar}>
+			<AppBar>
 				<Toolbar>
 					<Typography variant="h4">Flash Card Maker</Typography>
 					<Box mr={5} style={{ position: "absolute", right: 0 }}>
