@@ -102,7 +102,7 @@ function CardsPage(props) {
 
 	const ShowCard = word => (
 		<Paper className={classes.paper}>
-			<Box className="show-card-box" p={2}>
+			<Box className="show-card-box" p={3}>
 				<Typography variant="h5">
 					<strong>Word: {word.word}</strong>
 				</Typography>
@@ -115,7 +115,7 @@ function CardsPage(props) {
 	return (
 		<Box className={classes.cardBox} style={{ minHeight: "100vh" }}>
 			<Container>
-				<Box>
+				<Box className="card-page">
 					<Grid container spacing={2}>
 						{cards.map(word => (
 							<Grid item xs={12} sm={6} md={3}>

@@ -3,7 +3,7 @@ import { CssBaseline } from "@material-ui/core";
 import { Box } from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
 import { createMuiTheme } from "@material-ui/core";
-import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
+import { AppBar, Toolbar, Typography, Button, Grid } from "@material-ui/core";
 import Link from "next/link";
 import { white } from "ansi-colors";
 import Router from "next/router";
@@ -31,7 +31,7 @@ function layout(classes) {
 			</Head>
 			<CssBaseline />
 			<AppBar>
-				<Toolbar>
+				<Toolbar variant="regular">
 					<Typography variant="h4">Flash Card Maker</Typography>
 					<Box mr={5} style={{ position: "absolute", right: 0 }}>
 						<Link href="/study">

@@ -1,5 +1,6 @@
-.auth-login {
+$alt-line: #00ccff;
 
+.auth-login {
 	.MuiButton-root {
 		width: 100%;
 		margin-top: 16px;
@@ -8,7 +9,7 @@
 		margin-top: 8px;
 		width: 100%;
 	}
-	.login-card{
+	.login-card {
 		margin-top: 100px;
 		padding: 16px;
 	}
@@ -23,10 +24,30 @@
 	}
 }
 
-.show-card-box{
+.show-card-box {
 	margin-top: 100px;
 }
 
-#__next{
+#__next {
 	margin-top: 8px;
+}
+
+.card-page {
+}
+
+.MuiTextField-root {
+}
+
+.MuiInputLabel-shrink {
+	color: $alt-line !important;
+}
+.Mui-error {
+	color: red !important;
+}
+
+.MuiInput-underline:after {
+	border-bottom: 2px solid $alt-line !important;
+}
+.Mui-error:after {
+	border-bottom: 2px solid red !important;
 }
