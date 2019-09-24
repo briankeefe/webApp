@@ -24,12 +24,12 @@ David Keefe
     -   Follow this [link](https://nodejs.org/en/download/)
     -   Follow the instructions to install
 
--   Install NPM
-    -   Follow this [link]()
-    -   Follow the instructions to install
+-   NPM
+    - This should be installed with node
+    - To confirm, open up the console and type `node -v` and `npm -v`. Make sure it doesn't give an error
     
 -   Install Yarn
-    -   Follow this [link]()
+    -   Follow this [link](https://yarnpkg.com/lang/en/docs/install/#windows-stable)
     -   Follow the instructions to install
 -   **Restart your computer**
 
@@ -41,7 +41,10 @@ David Keefe
 
 ## Starting the Server
 
-1.  Open the command prompt and run `yarn go` - This will launch the website at location `localhost:3000`
+1. Open the console at the root of the project and type `yarn` or `yarn install`
+
+
+2. Next,run `yarn go` - This will launch the website at location `localhost:3000`
 
 2. Open a **separate command prompt** and run `yarn dev`
         - This will run the database
