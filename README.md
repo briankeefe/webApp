@@ -47,7 +47,7 @@ David Keefe
         - This will run the database
         - No further configuration needed 
 
-3. Navigate to the [home page](localhost:3000)
+3. Navigate to the [home page at localhost:3000](http://localhost:3000)
 
 #### Summary:
 `yarn go`
