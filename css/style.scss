@@ -1,4 +1,4 @@
-$alt-line: #00ccff;
+$alt-line: #3a6bf5;
 
 .auth-login {
 	.MuiButton-root {
@@ -42,7 +42,11 @@ $alt-line: #00ccff;
 	color: red !important;
 }
 
-.MuiInput-underline:after {
+.MuiFilledInput-underline:after {
+	border-bottom: 4px solid $alt-line !important;
+}
+
+.MuiInput-underline:after, .MuiFilledInput-underline:after{
 	border-bottom: 2px solid $alt-line !important;
 }
 .Mui-error:after {
