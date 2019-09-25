@@ -53,6 +53,9 @@ David Keefe
 3. Navigate to the [home page at localhost:3000](http://localhost:3000)
 
 #### Summary:
+
+`yarn`
+
 `yarn go`
 
 `yarn dev`
