@@ -9,7 +9,8 @@ import axios from "axios";
 import * as firebase from "firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Router from "next/router";
-import { theme, backgroundColor} from "../src/universal/theme";
+import { theme, backgroundColor } from "../src/universal/theme";
+import { pullCards } from "../src/universal/pullCards";
 
 const styles = theme => ({
 	root: {
@@ -26,8 +27,8 @@ const styles = theme => ({
 	},
 });
 
-const sleep = (milliseconds) => {
-	console.log("SLEEPING FOR "+ milliseconds + " milliseconds.");
+const sleep = milliseconds => {
+	console.log("SLEEPING FOR " + milliseconds + " milliseconds.");
 	return new Promise(resolve => setTimeout(resolve, milliseconds));
 };
 
@@ -43,54 +44,27 @@ function CardsPage(props) {
 	useEffect(() => {
 		console.log("TABLE PAGE");
 		if (user !== null && user.email !== null) {
-			user.getIdToken().then((obj) => {
+			user.getIdToken().then(obj => {
 				console.log("User: " + user.email);
 			});
 		} else {
 			console.log("No user yet...");
 			Router.push({
 				pathname: "/auth",
-				query: { fail: true }
+				query: { fail: true },
 			});
 		}
-
 	}, []);
 	useEffect(() => {
 		console.log("CONNECTING");
-		async function fetchData() {
-			// You can await here
-			console.log("BEFORE SLEEP");
-			let id = await sleep(100).then(() => {
-				for(let i = 0; i < 3; ++i){
-					try{
-						return user.email;
-					}catch(error){
-						console.log("Trying again");
-						sleep(500);
-					}
-				}
-			});
-			console.log("AFTER SLEEP");
-			console.log("ID: " + id);
-			const params = new URLSearchParams();
-			params.append("usr", id);
-			axios("http://localhost:3001/userWords", { params: { usr: id } }).then((response) => {
-				cardSet(response.data);
-				console.log(response);
-			}).catch((error) => {
-				console.log(error);
-			});
-		}
-
 		try {
-			fetchData();
+			pullCards(user, cardSet);
 			console.log("CONNECTED");
 		} catch (error) {
 			countInc();
 			console.log("ERROR: " + error);
 		}
-
-	},[]);
+	}, []);
 
 	const partOfSpeech = word => {
 		if (word === "" || word === undefined) {
