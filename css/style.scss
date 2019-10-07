@@ -46,9 +46,23 @@ $alt-line: #3a6bf5;
 	border-bottom: 4px solid $alt-line !important;
 }
 
-.MuiInput-underline:after, .MuiFilledInput-underline:after{
+.MuiInput-underline:after,
+.MuiFilledInput-underline:after {
 	border-bottom: 2px solid $alt-line !important;
 }
 .Mui-error:after {
 	border-bottom: 2px solid red !important;
+}
+
+.study-box {
+	.MuiCard-root {
+		margin-top: 100px;
+		margin-left: 20%;
+		margin-right: 20%;
+		padding: "16px";
+	}
+	.study-outer{
+		display: flex;
+		justify-content: space-between;
+	}
 }
