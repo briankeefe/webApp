@@ -159,8 +159,8 @@ function StudyPage(props) {
 									className="study-outer"
 									display="flex"
 									mb={2}>
-									<Box visibility={showButton} display="flex">
-										<Button onClick={posDec}>Prev</Button>
+									<Box display="flex">
+										<Button disabled={show} onClick={posDec}>Prev</Button>
 									</Box>
 									<Box className="card-button" display="flex">
 										<Button
@@ -170,10 +170,8 @@ function StudyPage(props) {
 										</Button>
 									</Box>
 									<Box
-										visibility={showButton}
-										className="next-box"
 										display="flex">
-										<Button onClick={posInc}>Next</Button>
+										<Button disabled={show} onClick={posInc}>Next</Button>
 									</Box>
 								</Box>
 								<CardContent>
