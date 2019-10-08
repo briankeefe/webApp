@@ -9,7 +9,7 @@ import {
 	Button,
 	CardActionArea,
 	CardActions,
-	Grid
+	Grid,
 } from "@material-ui/core";
 import Layout from "../src/universal/layout";
 import { white } from "ansi-colors";
@@ -86,9 +86,7 @@ function StudyPage(props) {
 		// Part 1: Redirect if not logged in
 		console.log("TABLE PAGE");
 		if (user !== null && user.email !== null) {
-			user.getIdToken().then(obj => {
-				console.log("User: " + user.email);
-			});
+			console.log("User:" + user.email);
 		} else {
 			console.log("No user yet...");
 			Router.push({
@@ -97,10 +95,8 @@ function StudyPage(props) {
 			});
 		}
 		//Part 2: Get words if logged in
-		console.log("CONNECTING");
 		try {
 			pullCards(user, cardSet);
-			console.log("CONNECTED");
 		} catch (error) {
 			console.log("ERROR: " + error);
 		}
@@ -110,13 +106,7 @@ function StudyPage(props) {
 		if (cards) {
 			setCard(cards[pos]);
 		}
-	}, ...cards);
-
-	useEffect(() => {
-		if (cards) {
-			setCard(cards[pos]);
-		}
-	}, [pos]);
+	}, [cards, pos]);
 
 	const posInc = () => {
 		if (pos + 1 === cards.length) {
@@ -165,12 +155,12 @@ function StudyPage(props) {
 					<Grid item sm={12} md={6} lg={8}>
 						<Card className="study-card">
 							<Box>
-								<Box className="study-outer" display="flex" mb={2}>
+								<Box
+									className="study-outer"
+									display="flex"
+									mb={2}>
 									<Box visibility={showButton} display="flex">
-										<Button
-											onClick={posDec}>
-											Prev
-										</Button>
+										<Button onClick={posDec}>Prev</Button>
 									</Box>
 									<Box className="card-button" display="flex">
 										<Button
@@ -183,10 +173,7 @@ function StudyPage(props) {
 										visibility={showButton}
 										className="next-box"
 										display="flex">
-										<Button
-											onClick={posInc}>
-											Next
-										</Button>
+										<Button onClick={posInc}>Next</Button>
 									</Box>
 								</Box>
 								<CardContent>
