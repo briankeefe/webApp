@@ -1,4 +1,5 @@
 $alt-line: #3a6bf5;
+$background: #cfd8dc;
 
 .auth-login {
 	.MuiButton-root {
@@ -65,4 +66,12 @@ $alt-line: #3a6bf5;
 		display: flex;
 		justify-content: space-between;
 	}
+	.study-button{
+		width: 100px;
+	}
+	.study-card{
+		min-height: 180px;
+	}
+	background-color: $background;
+	min-height: 100vh;
 }

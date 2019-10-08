@@ -9,6 +9,7 @@ import {
 	Button,
 	CardActionArea,
 	CardActions,
+	Grid
 } from "@material-ui/core";
 import Layout from "../src/universal/layout";
 import { white } from "ansi-colors";
@@ -77,6 +78,7 @@ function StudyPage(props) {
 	const [pos, setPos] = useState(0);
 	const [card, setCard] = useState(emptyCard);
 	const [text, setText] = useState("Loading...");
+	const [textType, setTextType] = useState("Loading...");
 	const [buttonText, setButtonText] = useState("Loading...");
 	const [showButton, setShowButton] = useState("");
 
@@ -142,11 +144,13 @@ function StudyPage(props) {
 	useEffect(() => {
 		console.log("Text effect...");
 		if (card && show) {
-			setText("DEF: " + card.def);
+			setTextType("Definition");
+			setText(card.def);
 			setButtonText("HIDE");
 			setShowButton("hidden");
 		} else if (card) {
-			setText("WORD: " + card.word);
+			setTextType("Word");
+			setText(card.word);
 			setButtonText("SHOW");
 			setShowButton("visible");
 		} else {
@@ -157,40 +161,46 @@ function StudyPage(props) {
 	if (card) {
 		return (
 			<Box className="study-box">
-				<Card>
-					<Box p={2}>
-						<CardContent>
-							<Typography variant="h3">{text}</Typography>
-						</CardContent>
-						<Box className="study-outer" display="flex">
-							<Box visibility={showButton} display="flex">
-								<Button
-									variant="contained"
-									color="secondary"
-									onClick={posDec}>
-									Prev
-								</Button>
+				<Grid container justify="center">
+					<Grid item sm={12} md={6} lg={8}>
+						<Card className="study-card">
+							<Box>
+								<Box className="study-outer" display="flex" mb={2}>
+									<Box visibility={showButton} display="flex">
+										<Button
+											onClick={posDec}>
+											Prev
+										</Button>
+									</Box>
+									<Box className="card-button" display="flex">
+										<Button
+											className="study-button"
+											onClick={toggle}>
+											{buttonText}
+										</Button>
+									</Box>
+									<Box
+										visibility={showButton}
+										className="next-box"
+										display="flex">
+										<Button
+											onClick={posInc}>
+											Next
+										</Button>
+									</Box>
+								</Box>
+								<CardContent>
+									<Typography display="inline" variant="h5">
+										<strong>{textType}:</strong>{" "}
+									</Typography>
+									<Typography display="inline" variant="h6">
+										{text}
+									</Typography>
+								</CardContent>
 							</Box>
-							<Box className="card-button" display="flex"> 
-								<Button
-									variant="contained"
-									color="secondary"
-									className="study-button"
-									onClick={toggle}>
-									{buttonText}
-								</Button>
-							</Box>
-							<Box visibility={showButton} className="next-box" display="flex">
-								<Button
-									variant="contained"
-									color="secondary"
-									onClick={posInc}>
-									Next
-								</Button>
-							</Box>
-						</Box>
-					</Box>
-				</Card>
+						</Card>
+					</Grid>
+				</Grid>
 			</Box>
 		);
 	} else {
