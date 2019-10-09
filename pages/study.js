@@ -157,4 +157,5 @@ function StudyPage(props) {
 		);
 	}
 }
-export default withStyles(styles(theme))(StudyPage);
+export default StudyPage;
+// withStyles(styles(theme))(StudyPage)

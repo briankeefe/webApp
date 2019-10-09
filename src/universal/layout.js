@@ -21,7 +21,7 @@ const styles = theme => ({
 
 function layout(classes) {
 	return (
-		<Box mb={10}>
+		<Box style={{marginBottom: "80px"}}>
 			<Head>
 				<title>My page title</title>
 				<meta
