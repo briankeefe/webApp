@@ -1,10 +1,19 @@
-import { Typography } from "@material-ui/core";
+import { Typography, Box } from "@material-ui/core";
+import { useEffect } from "react";
+import { confirmAuth } from "../src/universal/confirmAuth";
+import { useAuthState } from "react-firebase-hooks/auth/dist/auth";
+import * as firebase from "firebase";
 
 function AddPage() {
+	const [user, loading, error] = useAuthState(firebase.auth());
+	useEffect(() => {
+		confirmAuth();
+	});
+
 	return (
-		<Typography>
-            Loading...
-		</Typography>
+		<Box className="add-page">
+			<Typography>Loading...</Typography>
+		</Box>
 	);
 }
 
