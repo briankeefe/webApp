@@ -1,6 +1,6 @@
 import Router from "next/router";
 
-export const reject = user => {
+export const confirmAuth = user => {
 	if (user !== null && user.email !== null) {
 		console.log("User:" + user.email);
 	} else {

@@ -19,7 +19,7 @@ import { pullCards } from "../src/universal/pullCards";
 import { useAuthState } from "react-firebase-hooks/auth";
 import * as firebase from "firebase";
 import Router from "next/router";
-import { reject } from "../src/universal/reject";
+import { confirmAuth } from "../src/universal/confirmAuth";
 const styles = theme => ({
 	root: {
 		flexGrow: 1,
@@ -58,7 +58,7 @@ function StudyPage(props) {
 
 	useEffect(() => {
 		// Part 1: Redirect if not logged in
-		reject(user);
+		confirmAuth(user);
 		//Part 2: Get words if logged in
 		pullCards(user, cardSet);
 	}, []);
