@@ -19,6 +19,7 @@ import { pullCards } from "../src/universal/pullCards";
 import { useAuthState } from "react-firebase-hooks/auth";
 import * as firebase from "firebase";
 import Router from "next/router";
+import { reject } from "../src/universal/reject";
 const styles = theme => ({
 	root: {
 		flexGrow: 1,
@@ -35,33 +36,6 @@ const styles = theme => ({
 		minHeight: "15vh",
 	},
 });
-
-const printCard = (word, def, show, setShow) => {
-	const clickFunc = () => {
-		setShow(!show);
-	};
-	console.log("Printing card...");
-
-	if (show) {
-		return (
-			<Card>
-				<CardContent>
-					<Typography>{word}</Typography>
-					<Button onClick={clickFunc}>Toggle</Button>
-				</CardContent>
-			</Card>
-		);
-	} else {
-		return (
-			<Card>
-				<CardContent>
-					<Typography>{def}</Typography>
-					<Button onClick={clickFunc}>Toggle</Button>
-				</CardContent>
-			</Card>
-		);
-	}
-};
 
 function StudyPage(props) {
 	const { classes } = props;
@@ -84,22 +58,9 @@ function StudyPage(props) {
 
 	useEffect(() => {
 		// Part 1: Redirect if not logged in
-		console.log("TABLE PAGE");
-		if (user !== null && user.email !== null) {
-			console.log("User:" + user.email);
-		} else {
-			console.log("No user yet...");
-			Router.push({
-				pathname: "/auth",
-				query: { fail: true },
-			});
-		}
+		reject(user);
 		//Part 2: Get words if logged in
-		try {
-			pullCards(user, cardSet);
-		} catch (error) {
-			console.log("ERROR: " + error);
-		}
+		pullCards(user, cardSet);
 	}, []);
 
 	useEffect(() => {
