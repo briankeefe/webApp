@@ -113,7 +113,7 @@ function StudyPage(props) {
 		return (
 			<Box className="study-box">
 				<Grid container justify="center">
-					<Grid item sm={12} md={6} lg={8}>
+					<Grid item xs={12} sm={9} md={6} lg={4}>
 						<Card className="study-card">
 							<Box>
 								<Box
